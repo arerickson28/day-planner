@@ -1,9 +1,10 @@
-
-
 let DateTime = luxon.DateTime ;
+
 function displayTime() {
     let timeDisplayEl = $('#time-display');
+
     let currentDay = $('#currentDay')
+
     let now = DateTime.now()
 
     let year = now.year ;
@@ -29,15 +30,15 @@ function displayTime() {
     month = monthsOfTheYear[month -1]
 
 
-    let timeObject = {
-        "year": year,
-        "month": month,
-        "day": day,
-        "weekday": weekday,
-        "hour": hour,
-        "minute": minute,
-        "second": second
-    }
+    // let timeObject = {
+    //     "year": year,
+    //     "month": month,
+    //     "day": day,
+    //     "weekday": weekday,
+    //     "hour": hour,
+    //     "minute": minute,
+    //     "second": second
+    // }
 
     function getOrdinal() {
         let  dayAsString = String(day) ;
@@ -65,11 +66,34 @@ function displayTime() {
 
     currentDay.text(timeDisplay) ;
     timeDisplayEl.text(otherTimeDisplay)
+
+    let timeBlockArray = $(".event") ;
+    for (let i = 0; i < timeBlockArray.length; i++ ){
+        timeBlock = timeBlockArray.eq(i) ;
+        timeBlockHead = timeBlock.siblings().first() ;
+        timeBlockHeadValue = timeBlockHead[0].getAttribute("value");
+
+        if (timeBlockHeadValue < hour) {
+            timeBlock[0].classList.remove("present")
+            timeBlock[0].classList.remove("future")
+            timeBlock[0].classList.add("past")
+
+            
+        }else if (timeBlockHeadValue == hour){
+            timeBlock[0].classList.remove("past") ;
+            timeBlock[0].classList.remove("future") ;
+            timeBlock[0].classList.add("present") ;
+
+        } else if (timeBlockHeadValue > hour) {
+            timeBlock[0].classList.remove("past") ;
+            timeBlock[0].classList.remove("present") ;
+            timeBlock[0].classList.add("future") ;
+        }
+
+    }
+
+
 }
-
-
-
-
 
 
 setInterval(displayTime, 1000)
