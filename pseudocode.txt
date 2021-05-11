@@ -1,0 +1,18 @@
+--Need a table of sorts
+
+<table>
+    <th></th>
+    <th></th>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+--Display time at top of page
+
+--Use local storage
