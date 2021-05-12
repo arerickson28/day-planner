@@ -21,9 +21,9 @@ function displayTime() {
 
     let weekday = now.weekday ;
 
-    let daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    let daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] ;
 
-    let monthsOfTheYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    let monthsOfTheYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] ;
 
     weekday = daysOfTheWeek[weekday - 1]
 
@@ -46,9 +46,9 @@ function displayTime() {
     
        if (endOfDayString === "1" && dayAsString !== "11") {
            ordinal = "st"
-       } else if (endOfDayString === "2" && dayAsSting !== "12"){
+       } else if (endOfDayString === "2" && dayAsString !== "12"){
            oridnal = "nd"
-       } else if (endOfDayString === "3" && dayAsSting !== "13"){
+       } else if (endOfDayString === "3" && dayAsString !== "13"){
            ordinal = "rd"
        } else {
            ordinal = "th"
@@ -60,7 +60,7 @@ function displayTime() {
     
     let chosenOrdinal = getOrdinal() ;
     
-    let timeDisplay = weekday + ", " + month + " " + day + chosenOrdinal ;
+    let timeDisplay = weekday + ", " + month + " " + day + chosenOrdinal + ", " + year;
     
     let otherTimeDisplay = hour + ":" + minute + ":" + second;
 
@@ -79,7 +79,7 @@ function displayTime() {
             timeBlock[0].classList.add("past")
 
             
-        }else if (timeBlockHeadValue == hour){
+        } else if (timeBlockHeadValue == hour){
             timeBlock[0].classList.remove("past") ;
             timeBlock[0].classList.remove("future") ;
             timeBlock[0].classList.add("present") ;
