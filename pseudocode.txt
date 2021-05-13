@@ -16,3 +16,9 @@
 --Display time at top of page
 
 --Use local storage
+
+
+On load, get local storage, if value is null, make the thing, otherwise get local storage
+populate the boxes with what's in local storage
+
+when saving something new, get local storage, add the new thing, then set the local storage agin with the new value.

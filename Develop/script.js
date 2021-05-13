@@ -102,47 +102,33 @@ setInterval(displayTime, 1000)
 
 //Do I need to pair each textarea element with it's own unique id?
 
-let textareaArray = []
+// let textareaArray = []
 
-let arrayTextareaEl = document.getElementsByClassName("textarea") ;
-console.log(arrayTextareaEl) ;
-
-let arrayTextareaContent = [] ;
-
-
-if (localStorage.getItem("textareaArrray") === null) {
-    for (let i=0; i< arrayTextareaEl.length; i++) {
-        textareaArray.push({"textarea": ""})
-        localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
+//Initialize local storage
+if (localStorage.getItem("textareaArray") === null) {
+    let textareaArray = []
+    let numberOfTR = document.querySelectorAll("tr") ;
+    for (let i=0; i< numberOfTR.length; i++) {
+        textareaArray.push({"textarea": ""})  
     }
+    localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
 }
 
 
 
-function doThisStuff() {
 
-    for (textarea of arrayTextareaEl) {
-        arrayTextareaContent.push(textarea.value)
-    }
-    
-    // localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
-
-}
-
-console.log(arrayTextareaContent) ;
-console.log(textareaArray) ;
+// function getTextareaContent() {
+   
+// }
 
 //for each save button, create an event listener that runs local storage function for it's corresponding textarea
 
 let arraySaveButtons = document.getElementsByClassName("saveBtn") ;
 
-console.log(arraySaveButtons) ;
-
 
 for (let i = 0; i < arraySaveButtons.length; i++) {
     arraySaveButtons[i].addEventListener("click", function() {
-        console.log("savebuttonclicked") ;
-        doThisStuff() ;
+        console.log("save button clicked") ;
         toLocalStorage(i) ;
     })
 }   
@@ -152,14 +138,22 @@ for (let i = 0; i < arraySaveButtons.length; i++) {
 //     console.log(event.target.closest(".event"))
 // })
 //--------
-
+//Function to get content of textarea and send to local storage
 function toLocalStorage(i) {
-    console.log("save button clicked") ;
+    // console.log("save button clicked") ;
+    let arrayTextareaContent = [] ;
+    let arrayTextareaEl = document.getElementsByClassName("textarea") ;
+
+    for (textarea of arrayTextareaEl) {
+        
+        arrayTextareaContent.push(textarea.value)
+    }
     let areaText = arrayTextareaContent[i]
     let textareaArray = JSON.parse(localStorage.getItem("textareaArray")) ;
 
-    console.log(textareaArray[i]["textarea"])
+    
     textareaArray[i]["textarea"] = areaText ;
+    console.log(textareaArray[i]["textarea"])
 
     localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
 }
