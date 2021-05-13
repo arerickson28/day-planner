@@ -97,3 +97,69 @@ function displayTime() {
 
 
 setInterval(displayTime, 1000)
+
+
+
+//Do I need to pair each textarea element with it's own unique id?
+
+let textareaArray = []
+
+let arrayTextareaEl = document.getElementsByClassName("textarea") ;
+console.log(arrayTextareaEl) ;
+
+let arrayTextareaContent = [] ;
+
+
+if (localStorage.getItem("textareaArrray") === null) {
+    for (let i=0; i< arrayTextareaEl.length; i++) {
+        textareaArray.push({"textarea": ""})
+        localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
+    }
+}
+
+
+
+function doThisStuff() {
+
+    for (textarea of arrayTextareaEl) {
+        arrayTextareaContent.push(textarea.value)
+    }
+    
+    // localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
+
+}
+
+console.log(arrayTextareaContent) ;
+console.log(textareaArray) ;
+
+//for each save button, create an event listener that runs local storage function for it's corresponding textarea
+
+let arraySaveButtons = document.getElementsByClassName("saveBtn") ;
+
+console.log(arraySaveButtons) ;
+
+
+for (let i = 0; i < arraySaveButtons.length; i++) {
+    arraySaveButtons[i].addEventListener("click", function() {
+        console.log("savebuttonclicked") ;
+        doThisStuff() ;
+        toLocalStorage(i) ;
+    })
+}   
+//------
+// document.addEventListener("click", function(event){
+//     console.log(event.target.previousSibling) ;
+//     console.log(event.target.closest(".event"))
+// })
+//--------
+
+function toLocalStorage(i) {
+    console.log("save button clicked") ;
+    let areaText = arrayTextareaContent[i]
+    let textareaArray = JSON.parse(localStorage.getItem("textareaArray")) ;
+
+    console.log(textareaArray[i]["textarea"])
+    textareaArray[i]["textarea"] = areaText ;
+
+    localStorage.setItem("textareaArray", JSON.stringify(textareaArray))
+}

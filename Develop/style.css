@@ -64,6 +64,10 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  width: 55px ;
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
 }
 
 .saveBtn i:hover {
@@ -71,7 +75,15 @@ textarea {
   transition: all 0.3s ease-in-out;
 }
 
-
+tr {
+  display: flex ;
+  justify-content: space-between ;
+}
 .event {
   display: flex ;
+  flex-grow: 1 ;
+}
+
+th {
+  width: 100px ;
 }
