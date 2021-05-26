@@ -8,3 +8,8 @@ In this repository you will find:
 
 *image of day-planner app*
 ![Image of day-planner app](day_planner.png)
+
+---
+
+*link to deployed page:*
+https://arerickson28.github.io/day-planner/
