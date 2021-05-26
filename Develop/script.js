@@ -1,7 +1,8 @@
 function displayTime() {
+
     let timeDisplayEl = $('#time-display');
 
-    let currentDay = $('#currentDay')
+    let currentDay = $('#currentDay') ;
 
     let DateTime = luxon.DateTime ;
 
@@ -27,7 +28,7 @@ function displayTime() {
 
     weekday = daysOfTheWeek[weekday - 1]
 
-    month = monthsOfTheYear[month -1]
+    month = monthsOfTheYear[month - 1]
 
 //---------------------------------------------------
     function getOrdinal() {
@@ -51,14 +52,15 @@ function displayTime() {
     
     let chosenOrdinal = getOrdinal() ;
     
-    let timeDisplay = weekday + ", " + month + " " + day + chosenOrdinal + ", " + year;
+    let timeDisplay = weekday + ", " + month + " " + day + chosenOrdinal + ", " + year ;
     
-    let otherTimeDisplay = hour + ":" + minute + ":" + second;
+    // let otherTimeDisplay = hour + ":" + minute + ":" + second;
 
     currentDay.text(timeDisplay) ;
-    timeDisplayEl.text(otherTimeDisplay)
+    // timeDisplayEl.text(otherTimeDisplay)
 
     let timeBlockArray = $(".event") ;
+
     for (let i = 0; i < timeBlockArray.length; i++ ){
 
         timeBlock = timeBlockArray.eq(i) ;
@@ -134,7 +136,7 @@ function toLocalStorage(i) {
         
         arrayTextareaContent.push(textarea.value)
     }
-    
+
     let areaText = arrayTextareaContent[i]
     let textareaArray = JSON.parse(localStorage.getItem("textareaArray")) ;
 
